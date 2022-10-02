@@ -64,14 +64,13 @@ def plan():
 
 @app.route('/trafic')
 def trafic():
-    trafic_tab = requests_trafic_api(token)
-    return render_template('trafic.html', content=trafic_tab)
+    return render_template('trafic.html', content=requests_trafic_api(token))
 
 
 @app.route('/horaires')
 def horaires():
     horaires_tab = requests_horaires_api(token)
-    return render_template('horaires.html', content=horaires_tab)
+    return render_template('horaires.html', content=requests_horaires_api(token))
 
 
 if __name__ == '__main__':

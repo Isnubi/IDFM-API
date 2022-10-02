@@ -1,1 +1,1 @@
-token = "pQSYhdJZcm4B2RcUCWjhksjxSYALRWPu"
+token = "YOUR_API_KEY"
