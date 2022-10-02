@@ -24,10 +24,10 @@ def requests_trafic_api(token):
 
 
 def requests_horaires_api(token):
-    url = 'https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=IDFM%3AmonomodalStopPlace%3A46725'
+    url = 'https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF%3AStopPoint%3AQ%3A420637%3A'
     headers = {
         'Accept': 'application/json',
-        'apikey': token
+        'apikey': token,
     }
     req = requests.get(url, headers=headers)
     tab = []
@@ -35,9 +35,7 @@ def requests_horaires_api(token):
         data = req.content.decode('utf-8')
         data = json.loads(data)
         for i in data['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit']:
-            # show each message on the browser
-            if i['MonitoredVehicleJourney']['MonitoredCall']['ExpectedArrivalTime'] is not None:
-                tab.append(i['MonitoredVehicleJourney']['MonitoredCall']['ExpectedArrivalTime'])
+            tab.append(i['MonitoredVehicleJourney']['MonitoredCall']['ExpectedDepartureTime'] + ' ----- ' + i['MonitoredVehicleJourney']['MonitoredCall']['DestinationDisplay'][0]['value'])
     else:
         print('Error: ', req.status_code)
     return tab
@@ -58,13 +56,14 @@ def plan():
 
 @app.route('/trafic')
 def trafic():
-    tab = requests_api(token)
-    return render_template('trafic.html', content=tab)
+    trafic_tab = requests_trafic_api(token)
+    return render_template('trafic.html', content=trafic_tab)
 
 
 @app.route('/horaires')
 def horaires():
-    return 1
+    horaires_tab = requests_horaires_api(token)
+    return render_template('horaires.html', content=horaires_tab)
 
 
 if __name__ == '__main__':
