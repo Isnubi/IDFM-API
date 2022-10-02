@@ -1,0 +1,32 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap'); /*Importer une police*/
+
+div#banner{ /*Image de fond*/
+    position: fixed;
+    background-image: url(/static/album/index-back.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    top: 0;
+    left: 0;
+}
+
+div#filterbanner{ /*Filtre de l'image de fond*/
+    position: fixed;
+    background: rgba(200, 200, 200, 0.90);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+main{
+    font-family: Montserrat, sans-serif;
+    position: relative;
+    z-index: 15;
+    margin-top: 5rem;
+}

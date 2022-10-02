@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}RER B{% endblock %}
+{% block content %}
+<div class="starter-template text-center py-5 px-3">
+    {% for item in content %}
+    <p>{{ item }}</p>
+    {% endfor %}
+</div>
+{% endblock %}
