@@ -1,5 +1,7 @@
 from flask import Flask, render_template
-import json, requests
+import json
+import requests
+import datetime
 from private.config import token
 
 
@@ -15,9 +17,11 @@ def requests_trafic_api(token):
         data = req.content.decode('utf-8')
         data = json.loads(data)
         for i in data['Siri']['ServiceDelivery']['GeneralMessageDelivery'][0]['InfoMessage']:
-            # show each message on the browser
-            if i['Content']['message'][0]['messageText']['value'] is not None:
+            # check if the key "message" exists
+            if 'message' in i['Content']:
                 tab.append(i['Content']['message'][0]['messageText']['value'])
+            else:
+                tab.append("No message were find by the API")
     else:
         print('Error: ', req.status_code)
     return tab
@@ -35,7 +39,11 @@ def requests_horaires_api(token):
         data = req.content.decode('utf-8')
         data = json.loads(data)
         for i in data['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit']:
-            tab.append(i['MonitoredVehicleJourney']['MonitoredCall']['ExpectedDepartureTime'] + ' ----- ' + i['MonitoredVehicleJourney']['MonitoredCall']['DestinationDisplay'][0]['value'])
+            time = i['MonitoredVehicleJourney']['MonitoredCall']['ExpectedDepartureTime']
+            time = datetime.datetime.strptime(time[11:16], '%H:%M')
+            time = time + datetime.timedelta(hours=2)
+            tab.append(time.strftime('%H:%M') + ' - Next stop: ' +
+                  i['MonitoredVehicleJourney']['MonitoredCall']['DestinationDisplay'][0]['value'])
     else:
         print('Error: ', req.status_code)
     return tab
