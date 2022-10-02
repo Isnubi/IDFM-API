@@ -22,15 +22,15 @@ def requests_horaires_api(token):
     url = 'https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF%3AStopPoint%3AQ%3A420637%3A'
     headers = {
         'Accept': 'application/json',
-        'apikey': token
+        'apikey': token,
+
     }
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         data = req.content.decode('utf-8')
-        open('data.json', 'w').write(data)
         data = json.loads(data)
         for i in data['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit']:
-            print(i['MonitoredVehicleJourney']['MonitoredCall']['AimedDepartureTime'])
+            print(i['MonitoredVehicleJourney']['MonitoredCall']['ExpectedDepartureTime'] + ' ----- ' + i['MonitoredVehicleJourney']['MonitoredCall']['DestinationDisplay'][0]['value'])
     else:
         print('Error: ', req.status_code)
 
