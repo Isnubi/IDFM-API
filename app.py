@@ -35,7 +35,6 @@ def requests_trafic_api(token):
         data = req.content.decode('utf-8')
         data = json.loads(data)
         for i in data['Siri']['ServiceDelivery']['GeneralMessageDelivery'][0]['InfoMessage']:
-            # check if the key "message" exists
             if 'message' in i['Content']:
                 tab.append(i['Content']['message'][0]['messageText']['value'])
             else:
@@ -57,7 +56,6 @@ def requests_horaires_api(token):
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         data = req.content.decode('utf-8')
-        open('data.json', 'w').write(data)
         data = json.loads(data)
         for i in data['Siri']['ServiceDelivery']['StopMonitoringDelivery'][0]['MonitoredStopVisit']:
             line_value = "line:IDFM:" + i['MonitoredVehicleJourney']['LineRef']['value'][11:-1]
