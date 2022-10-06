@@ -116,12 +116,16 @@ You can install **this project** by following these steps.
     python3 -m pip install flask requests beautifulsoup4 pdf2image
     ```
 
+4. If you're on a Windows system, you need to install **Poppler**. You can get it [here](https://github.com/oschwartz10612/poppler-windows/releases/)
+   * Extract the archive
+   * Add the path to the bin folder to your PATH environment variable. You can follow this [tutorial](https://learn.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)) to do so.
+
 ### Installation
 
 1. Get an API Key at [https://prim.iledefrance-mobilites.fr/](https://prim.iledefrance-mobilites.fr/fr)
 2. Enter your API Key in `private/config.py`
     ```
-    token = "YOUR_API_KEY"
+    idfm_token = "YOUR_API_TOKEN_HERE"
     ```
 3. Run the flask application
     ```sh

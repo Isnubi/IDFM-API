@@ -40,8 +40,7 @@ def get_line_map(line_name):
     req = requests.get(url)
     if req.status_code == 200:
         open('static/map/' + f"{line_name}" + '.pdf', 'wb').write(req.content)
-        images = convert_from_path('static/map/' + f"{line_name}" + '.pdf',
-                                   poppler_path=r'win\poppler-22.04.0\Library\bin')
+        images = convert_from_path('static/map/' + f"{line_name}" + '.pdf')
         images[0].save('static/map/' + f"{line_name}" + '.jpeg', 'JPEG')
         return 'static/map/' + f"{line_name}" + '.jpeg'
     else:
