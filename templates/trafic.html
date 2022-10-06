@@ -1,7 +1,14 @@
 {% extends "base.html" %}
-{% block title %}RER B{% endblock %}
+{% block title %}IDFM - Trafic{% endblock %}
 {% block content %}
 <div class="starter-template text-center py-5 px-3">
+<form method="post">
+    <input type="submit" name="RER A" value="RER A" class="btn btn-primary"></input>
+    <input type="submit" name="RER B" value="RER B" class="btn btn-primary"></input>
+    <input type="submit" name="RER C" value="RER C" class="btn btn-primary"></input>
+    <input type="submit" name="RER D" value="RER D" class="btn btn-primary"></input>
+    <input type="submit" name="RER E" value="RER E" class="btn btn-primary"></input>
+</form>
     {% for item in content %}
     <p>{{ item }}</p>
     {% endfor %}
