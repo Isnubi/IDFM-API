@@ -1,1 +1,1 @@
-token = "YOUR_API_KEY"
+idfm_token = "YOUR_API_KEY"
