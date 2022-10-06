@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}RER B{% endblock %}
+{% block content %}
+<div class="starter-template text-center py-5 px-3">
+<img alt="map" height="100%" width="100%" src={{ map }}/><br><br>
+<h1>Trafic information</h1>
+{% for info in trafic %}
+<p>{{ info }}</p>
+{% endfor %}
+</div>
+{% endblock %}

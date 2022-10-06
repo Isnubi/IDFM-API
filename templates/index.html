@@ -3,8 +3,12 @@
 {% block content %}
 <div class="starter-template text-center py-5 px-3">
     <h1>IDFM</h1><br>
-    <a href="trafic" class="btn btn-primary">Voir l'information trafic</a>
-    <a href="horaires" class="btn btn-primary">Voir les prochains passages</a>
-    <a href="plan" class="btn btn-primary">Voir le plan</a>
+    <form method="post">
+        <input type="submit" name="RER A" value="RER A" class="btn btn-primary"></input>
+        <input type="submit" name="RER B" value="RER B" class="btn btn-primary"></input>
+        <input type="submit" name="RER C" value="RER C" class="btn btn-primary"></input>
+        <input type="submit" name="RER D" value="RER D" class="btn btn-primary"></input>
+        <input type="submit" name="RER E" value="RER E" class="btn btn-primary"></input>
+    </form>
 </div>
 {% endblock %}

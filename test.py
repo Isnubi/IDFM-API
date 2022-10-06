@@ -3,24 +3,38 @@ import json
 import datetime
 from private.config import idfm_token
 from bs4 import BeautifulSoup
+from pdf2image import convert_from_path
 
 
 def get_line_map(line_name):
+    """
+    Get map of a line
+    :param line_name: Name of the train line
+    :return:
+    """
     url = 'https://www.transilien.com/fr/sites/transilien/files/plan-de-ligne-' + f"{line_name}" + '.pdf'
     req = requests.get(url)
     if req.status_code == 200:
-        open('map.pdf', 'wb').write(req.content)
+        open('static/map/' + f"{line_name}" + '.pdf', 'wb').write(req.content)
+        images = convert_from_path('static/map/' + f"{line_name}" + '.pdf',
+                                   poppler_path=r'win\poppler-22.04.0\Library\bin')
+        images[0].save('static/map/' + f"{line_name}" + '.jpeg', 'JPEG')
     else:
         print('Error: ', req.status_code)
 
 
 def get_line(token, line_id):
+    """
+    Get line type and name
+    :param token: API token
+    :param line_id: ID of the train line
+    :return:
+    """
     url = 'https://prim.iledefrance-mobilites.fr/marketplace/navitia/coverage/fr-idf/lines?filter=line.id=' + \
           f"{line_id}" + '&disable_geojson=true&disable_disruption=true'
     headers = {
         'Accept': 'application/json',
-        'apikey': token
-    }
+        'apikey': token}
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         data = req.content.decode('windows-1252')
@@ -32,14 +46,18 @@ def get_line(token, line_id):
         print('Error: ', req.status_code)
 
 
-def requests_api(token):
-    line_id = 'line:IDFM:C01743'
+def get_trafic(token, line_id):
+    """
+    Get trafic for a line
+    :param token: API token
+    :param line_id: ID of the train line
+    :return:
+    """
     url = 'https://prim.iledefrance-mobilites.fr/marketplace/navitia/coverage/fr-idf/lines?filter=line.id=' + \
           f"{line_id}"
     headers = {
         'Accept': 'application/json',
-        'apikey': token
-    }
+        'apikey': token}
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         data = req.content.decode('windows-1252')
@@ -52,20 +70,22 @@ def requests_api(token):
         print('Error: ', req.status_code)
 
 
-def requests_horaires_api(token):
-
+def get_schedules(token, stop_id):
+    """
+    Get schedules for a stop
+    :param token: API token
+    :param stop_id: ID of the train station
+    :return:
+    """
     now = datetime.datetime.now()
     now = now.strftime("%H:%M")
     now = datetime.datetime.strptime(now, '%H:%M')
 
-    stop_id = '411403'
     url = 'https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF%3AStopPoint%3AQ%3A' + \
           stop_id + '%3A'
     headers = {
         'Accept': 'application/json',
-        'apikey': token,
-
-    }
+        'apikey': token}
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         data = req.content.decode('utf-8')
@@ -97,5 +117,3 @@ def requests_horaires_api(token):
     else:
         print('Error: ', req.status_code)
 
-
-requests_horaires_api(idfm_token)
