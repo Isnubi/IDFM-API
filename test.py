@@ -24,7 +24,6 @@ def get_line(token, line_id):
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         data = req.content.decode('windows-1252')
-        open('data.json', 'w').write(data)
         data = json.loads(data)
         line_type = data['lines'][0]['network']['name']
         line = data['lines'][0]['code']
@@ -44,7 +43,6 @@ def requests_api(token):
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         data = req.content.decode('windows-1252')
-        open('data.json', 'w').write(data)
         data = json.loads(data)
         for i in data['disruptions']:
             for j in i['messages']:
@@ -100,4 +98,4 @@ def requests_horaires_api(token):
         print('Error: ', req.status_code)
 
 
-requests_api(idfm_token)
+requests_horaires_api(idfm_token)

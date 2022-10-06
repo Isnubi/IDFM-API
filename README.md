@@ -113,9 +113,8 @@ You can install **this project** by following these steps.
     ```
    If the requirements.txt file didn't work, you can install the required packages manually using the following command:
     ```sh
-    python3 -m pip install flask requests
+    python3 -m pip install flask requests beautifulsoup4 pdf2image
     ```
-
 
 ### Installation
 
