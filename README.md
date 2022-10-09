@@ -68,6 +68,8 @@ This project is a simple viewer for RER B informations. It uses the Ile de Franc
 * [![JSON][JSON-shield]][JSON-url]
 * [![HTML][HTML-shield]][HTML-url]
 * [![CSS][CSS-shield]][CSS-url]
+* [![JavaScript][JavaScript-shield]][JavaScript-url]
+* [![Bootstrap][Bootstrap-shield]][Bootstrap-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -143,10 +145,7 @@ You can install **this project** by following these steps.
 The application is accessible at [http://localhost:5000/](http://localhost:5000/).
 
 You have an index page with button to access the different pages:
-- **Home**: The home page
-- **Trafic**: The trafic infos page
-- **Horaires**: The schedules page
-- **Plan**: The map page
+- **Home**: The home page with the button to get, on the same page, the map and the trafic informations
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -229,5 +228,9 @@ Isnubi - [@Louis_Gambart](https://twitter.com/Louis_Gambart) - [contact@louis-ga
 [CSS-url]: https://www.w3.org/Style/CSS/Overview.en.html
 [Flask-shield]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white
 [Flask-url]: https://flask.palletsprojects.com/en/2.0.x/
+[Bootstrap-shield]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JavaScript-shield]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Twitter-shield]: https://img.shields.io/twitter/follow/Louis_Gambart?style=social
 [Twitter-url]: https://twitter.com/Louis_Gambart/
