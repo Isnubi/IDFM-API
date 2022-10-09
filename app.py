@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import json
 import requests
 import datetime
@@ -146,7 +146,7 @@ def index():
         elif request.form.get('RER E'):
             line_id = 'line:IDFM:C01729'
             line_name = 'rer-e'
-        return render_template('lines.html', trafic=get_trafic(idfm_token, line_id), map=get_line_map(line_name))
+        return render_template('index.html', trafic=get_trafic(idfm_token, line_id), map=get_line_map(line_name))
     return render_template('index.html')
 
 
@@ -154,6 +154,11 @@ def index():
 def rerb():
     return render_template('villeparisis.html', schedules=get_schedules(idfm_token, '411403'),
                            trafic=get_trafic(idfm_token, 'line:IDFM:C01743'), map=get_line_map('rer-b'))
+
+
+@app.route('/jquery.js')
+def jquery():
+    return send_from_directory('static/js', 'jquery-3.6.1.min.js')
 
 
 if __name__ == '__main__':

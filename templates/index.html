@@ -4,11 +4,30 @@
 <div class="starter-template text-center py-5 px-3">
     <h1>IDFM</h1><br>
     <form method="post">
-        <input type="submit" name="RER A" value="RER A" class="btn btn-primary"></input>
-        <input type="submit" name="RER B" value="RER B" class="btn btn-primary"></input>
-        <input type="submit" name="RER C" value="RER C" class="btn btn-primary"></input>
-        <input type="submit" name="RER D" value="RER D" class="btn btn-primary"></input>
-        <input type="submit" name="RER E" value="RER E" class="btn btn-primary"></input>
+        <button type="button" class="btn btn-transparent" data-bs-toggle="tooltip" data-bs-html="true" data-bs-animation="false" data-bs-placement="bottom" title="<img src='/static/album/RER_A.png' width='32px' height='32px'/>">
+            <input type="submit" name="RER A" value="RER A" class="btn btn-primary"></input>
+        </button>
+        <button type="button" class="btn btn-transparent" data-bs-toggle="tooltip" data-bs-html="true" data-bs-animation="false" data-bs-placement="bottom" title="<img src='/static/album/RER_B.png' width='32px' height='32px'/>">
+            <input type="submit" name="RER B" value="RER B" class="btn btn-primary"></input>
+        </button>
+        <button type="button" class="btn btn-transparent" data-bs-toggle="tooltip" data-bs-html="true" data-bs-animation="false" data-bs-placement="bottom" title="<img src='/static/album/RER_C.png' width='32px' height='32px'/>">
+            <input type="submit" name="RER C" value="RER C" class="btn btn-primary"></input>
+        </button>
+        <button type="button" class="btn btn-transparent" data-bs-toggle="tooltip" data-bs-html="true" data-bs-animation="false" data-bs-placement="bottom" title="<img src='/static/album/RER_D.png' width='32px' height='32px'/>">
+            <input type="submit" name="RER D" value="RER D" class="btn btn-primary"></input>
+        </button>
+        <button type="button" class="btn btn-transparent" data-bs-toggle="tooltip" data-bs-html="true" data-bs-animation="false" data-bs-placement="bottom" title="<img src='/static/album/RER_E.png' width='32px' height='32px'/>">
+            <input type="submit" name="RER E" value="RER E" class="btn btn-primary"></input>
+        </button>
     </form>
+
+    <br><br>
+    <img alt="map" height="100%" width="100%" src={{ map }}/><br><br>
+    <h1>Trafic information</h1>
+    {% for info in trafic %}
+    <p>{{ info }}</p>
+    {% endfor %}
 </div>
+
 {% endblock %}
+

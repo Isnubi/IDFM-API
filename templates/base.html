@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='album/favicon.png') }}">
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/jquery-3.6.1.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-bs-toggle="tooltip"]').tooltip()
+        })
+    </script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -19,15 +26,6 @@
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Homepage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/trafic">Trafic</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/horaires">Horaires</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/plan">Plan</a>
                     </li>
                 </ul>
             </div>
