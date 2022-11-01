@@ -142,7 +142,7 @@ You can install **this project** by following these steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The application is accessible at [http://localhost:5000/](http://localhost:5000/).
+Once it run, the application is accessible at [http://localhost:5000/](http://localhost:5000/).
 
 You have an index page with button to access the different pages:
 - **Home**: The home page with the button to get, on the same page, the map and the trafic informations
