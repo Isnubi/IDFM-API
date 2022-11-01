@@ -96,29 +96,21 @@ You can install **this project** by following these steps.
         sudo apt install git
         ```
 
-2. Install **Python**. You can download it [here](https://www.python.org/downloads/) or by using the following command on Linux:
+2. Run the install script as user (not root).
+   * For Debian-based systems (Debian, Ubuntu, Mint, etc.):
+       ```sh
+       sudo chmod +x apt_install.sh
+       sudo ./apt_install.sh
+       ```
+   * For Windows systems:
+       * Install Python from [here](https://www.python.org/downloads/windows/)
+       * Install Pip from [here](https://pip.pypa.io/en/stable/installing/)
+       * Install pip dependencies:
+           ```sh
+           pip install -r requirements.txt
+           ```
 
-   * Debian/Ubuntu:
-     ```sh
-     sudo apt install python3 python3-pip
-     ```
-  
-   * Fedora/CentOS/RHEL:
-     ```sh
-     sudo dnf install python3 python3-pip
-     ```
-
-3. Install the required python packages using **pip**:
-
-    ```sh
-    python3 -m pip install -r requirements.txt
-    ```
-   If the requirements.txt file didn't work, you can install the required packages manually using the following command:
-    ```sh
-    python3 -m pip install flask requests beautifulsoup4 pdf2image
-    ```
-
-4. If you're on a Windows system, you need to install **Poppler**. You can get it [here](https://github.com/oschwartz10612/poppler-windows/releases/)
+3. If you're on a Windows system, you need to install **Poppler**. You can get it [here](https://github.com/oschwartz10612/poppler-windows/releases/)
    * Extract the archive
    * Add the path to the bin folder to your PATH environment variable. You can follow this [tutorial](https://learn.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)) to do so.
 
